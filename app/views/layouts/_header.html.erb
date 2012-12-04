@@ -1,0 +1,3 @@
+<% if user_signed_in? %>
+	<p>logged in as <%= current_user.email %> <%= link_to 'logout', '/users/sign_out', method: :delete %></p>
+<% end %>
