@@ -8,6 +8,8 @@ gem 'rails', '3.2.9'
 gem 'pg'
 gem 'devise'
 gem 'thin'
+gem 'bootstrap-sass', '~> 2.2.1.1'
+gem 'simple_form' 
 
 
 # Gems used only for assets and not required
