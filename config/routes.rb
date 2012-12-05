@@ -1,7 +1,11 @@
 Encounters::Application.routes.draw do
 
+  get "users/show"
+
   devise_for :users
-  root :to => 'contacts#index'
+
+  # resource :user, only: [:show]
+  root :to => 'users#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

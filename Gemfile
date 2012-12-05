@@ -23,6 +23,11 @@ end
 
 group :test do
 	gem 'capybara', '~> 2.0.1'
+	gem 'factory_girl_rails', '~> 4.1'
+	gem 'launchy'
+	gem 'spork'
+	gem 'rb-fsevent', require: false
+	gem 'database_cleaner'
 end
 
 group :development do
