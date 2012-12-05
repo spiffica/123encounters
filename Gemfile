@@ -4,7 +4,6 @@ gem 'rails', '3.2.9'
 
 gem 'pg'
 gem 'devise'
-gem 'thin'
 gem 'bootstrap-sass', '~> 2.2.1.1'
 gem 'simple_form' 
 gem 'jquery-rails'
@@ -25,6 +24,12 @@ end
 group :test do
 	gem 'capybara', '~> 2.0.1'
 end
+
+group :development do
+	gem 'thin'
+	gem 'annotate'
+end
+
 
 
 # To use ActiveModel has_secure_password
