@@ -4,7 +4,11 @@ Encounters::Application.routes.draw do
 
   devise_for :users
 
-  # resource :user, only: [:show]
+
+
+  resource :user, only: [:show] 
+  resources :contacts
+
   root :to => 'users#show'
 
   # The priority is based upon order of creation:
