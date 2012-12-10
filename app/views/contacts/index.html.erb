@@ -1,0 +1,13 @@
+<p>This is the <em>Contact's Index page</em> </p>
+
+
+<table id="contact_list">
+	<% @contacts.each do |c| %>
+	<tr>
+		<td><%= c.first_name + ' ' + c.last_name %></td>
+		<%= render 'contacts/contact_actions', :contact => c %>
+	</tr>
+	<% end %>
+</table>
+
+<p><%= link_to "Add Contact", new_contact_path %></p>

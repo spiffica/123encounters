@@ -23,3 +23,4 @@ describe Contact do
   	expect(@contact).to be_valid
   end
 end
+ 

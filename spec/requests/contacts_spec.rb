@@ -1,36 +1,15 @@
 require 'spec_helper'
 
-describe "Users" do
+describe "Contacts" do
 	before do
 		@user = FactoryGirl.create :user
 		visit root_path
-	end
-	context "not signed in" do
-		specify "arrive at sign_in page" do
-	  	expect(current_path).to eq(new_user_session_path)
-		end
-	end
-	context "with invalid credentials" do
-		before do
-			fill_in 'Email', with: 'bad_email'
-			fill_in 'Password', with: 'foobar'
-			click_button 'Sign in'
-		end
-	  specify "arrive at sign_in page" do
-	  	expect(current_path).to eq(new_user_session_path)
-	  end
+		fill_in 'Email', with: @user.email
+		fill_in 'Password', with: @user.password
+		click_button 'Sign in'
 	end
 
-	context "signed in" do
-		before do
-			fill_in 'Email', with: @user.email
-			fill_in 'Password', with: 'foobar'
-			click_button 'Sign in'
-		end
-	  specify "arrive at #show" do
-			expect(page).to have_content(@user.email)
-	  end
-	  describe "crud actions ->" do
+  describe "signed in User" do
 	  	before do
 	  		click_link 'Add Contact'
 	  		fill_in 'First name', with: 'Jenny'
@@ -55,7 +34,11 @@ describe "Users" do
 		  	click_link "delete"
 
 		  	expect(page).not_to have_content("Wafer")
+		  	expect(current_path).to eq(contacts_path)
+		  	expect(Contact.count).to eq(0)
+		  end
+		  specify "must enter a first name when creating contact" do
+		  	
 		  end
 		end
-	end
 end

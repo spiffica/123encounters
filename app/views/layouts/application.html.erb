@@ -8,6 +8,9 @@
 		</head>
 		<body>
 			<%= render 'layouts/header' %>
+				<% if flash[:success] %>
+					<p id="success"><%= flash[:success] %></p>
+				<% end %>
 			<p id="notice"><%= notice %></p>
 			<p id="alert"><%= alert %></p>
 		<%= yield %>
