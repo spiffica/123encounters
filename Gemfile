@@ -7,6 +7,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 2.2.1.1'
 gem 'simple_form' 
 gem 'jquery-rails'
+gem 'thin'
 
 
 # Gems used only for assets and not required
@@ -31,7 +32,7 @@ group :test do
 end
 
 group :development do
-	gem 'thin'
+	# gem 'thin'
 	gem 'annotate'
 end
 
