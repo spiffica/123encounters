@@ -32,7 +32,6 @@ group :test do
 end
 
 group :development do
-	# gem 'thin'
 	gem 'annotate'
 end
 
