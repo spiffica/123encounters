@@ -1,6 +1,8 @@
 Encounters::Application.routes.draw do
 
-  get "users/show"
+  #get "encounters/new"
+
+  # get "users/show"
 
   devise_for :users
 
@@ -8,6 +10,7 @@ Encounters::Application.routes.draw do
 
   resource :user, only: [:show] 
   resources :contacts
+  resources :encounters
 
   root :to => 'users#show'
 

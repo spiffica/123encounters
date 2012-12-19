@@ -16,14 +16,13 @@ describe "Contacts" do
 			fill_in 'Email', with: @user.email
 			fill_in 'Password', with: @user.password
 			click_button 'Sign in'
+			add_contact
 		end
 	  specify "can add a contact" do
-  		add_contact
 
 	  	expect(page).to have_content('Jenny')
 	  end
 	  specify "can edit a contact" do
-  		add_contact
 	  	within "table#contact_list" do 
 	  		click_link "edit"
 	  	end
@@ -34,7 +33,6 @@ describe "Contacts" do
 
 	  end
 	  specify "can delete a contact" do
-	  	add_contact
 	  	click_link "delete"
 
 	  	expect(page).not_to have_content("Wafer")

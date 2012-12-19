@@ -1,0 +1,5 @@
+<%= simple_form_for @encounter do |f| %>
+	<%= f.input :contact, collection: @contacts, label_method: :first_name %>
+	<%= f.input :duration, collection: 1..60 %>
+	<%= f.submit %>
+<% end %>

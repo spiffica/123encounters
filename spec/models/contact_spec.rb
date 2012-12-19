@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: contacts
+#
+#  id         :integer          not null, primary key
+#  first_name :string(255)
+#  last_name  :string(255)
+#  company    :string(255)
+#  position   :string(255)
+#  email      :string(255)
+#  phone      :string(255)
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'spec_helper'
 
 describe Contact do
@@ -21,6 +37,10 @@ describe Contact do
   	expect(@contact).not_to be_valid
   	@contact.email = "here@Now.CoM"
   	expect(@contact).to be_valid
+  end
+  it "returns blank array when no current_user" do
+    @con = FactoryGirl.create :contact, :user
+    expect{Contact.all}.to eq([])
   end
 end
  

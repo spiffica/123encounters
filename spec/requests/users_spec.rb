@@ -56,6 +56,12 @@ describe "Users" do
 
 		  	expect(page).not_to have_content("Wafer")
 		  end
+			specify "can create an encounter" do
+				pending
+				click_link "Add Encounter"
+				fill_in 
+			end
 		end
+
 	end
 end

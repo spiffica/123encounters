@@ -5,7 +5,7 @@
 #  id                     :integer          not null, primary key
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
-#  reset_password_token   :string(255) 
+#  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
 #  sign_in_count          :integer          default(0)
@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   has_many :contacts, dependent: :destroy
+  has_many :encounters, dependent: :destroy
 
 
 end
