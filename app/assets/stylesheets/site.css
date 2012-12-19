@@ -1,0 +1,18 @@
+body {
+	background-color: lightBlue;
+}
+div.my_container {
+	background-color: white;
+	border: black solid 1px;
+	width: 80%;
+	margin: 20px auto;
+	padding: 10px;
+}
+a#home {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+span#login {
+	float: right;
+}

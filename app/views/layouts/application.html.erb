@@ -7,13 +7,17 @@
 		  <%= csrf_meta_tags %>
 		</head>
 		<body>
-			<%= render 'layouts/header' %>
-				<% if flash[:success] %>
-					<p id="success"><%= flash[:success] %></p>
-				<% end %>
-			<p id="notice"><%= notice %></p>
-			<p id="alert"><%= alert %></p>
-		<%= yield %>
-
+			<div class="my_container">
+				<%= render 'layouts/header' %>
+					<% if flash[:success] %>
+						<p id="success"><%= flash[:success] %></p>
+					<% end %>
+					<% if flash[:error] %>
+						<p id="error"><%= flash[:error] %></p>
+					<% end %>
+				<p id="notice"><%= notice %></p>
+				<p id="alert"><%= alert %></p>
+				<%= yield %>
+			</div>
 		</body>
 	</html>

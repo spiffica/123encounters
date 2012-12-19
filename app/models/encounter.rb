@@ -14,5 +14,8 @@
 class Encounter < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
-  attr_accessible :dialog, :duration, :subject
+  attr_accessible :time_of, :duration, :contact_id
+
+  validates :contact_id, presence: true,
+  					inclusion: { in: lambda {|enc| enc.user.contacts.map { |c| c.id}}}
 end
