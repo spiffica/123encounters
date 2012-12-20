@@ -1,5 +1,8 @@
-<h1>Encounter number is <%= encounter.id %></h1>
-<h3>Contact: <%= encounter.contact.first_name %></h3>
-<p>Time: <%= encounter.time_of %></p>
-<small><%= link_to 'edit', edit_encounter_path(encounter) %></small>
-<small><%= link_to 'delete', encounter, method: :delete %></small>
+<div class='encounter' id="encounter-<%= encounter.id %>">
+	<h1>Encounter number is <%= encounter.id %></h1>
+	<h3>Contact: <%= encounter.contact.first_name %></h3>
+	<p>Time: <%= encounter.time_of %></p>
+	<small><%= link_to 'edit', edit_encounter_path(encounter) %></small> |
+	<small><%= link_to 'delete', encounter, method: :delete %></small> |
+	<small><%= link_to 'view', encounter_path(encounter) %></small>
+</div>

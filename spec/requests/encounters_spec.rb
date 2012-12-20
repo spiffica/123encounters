@@ -50,7 +50,7 @@ describe "Encounters" do
 				select '20', from: 'Duration'
 				click_button 'Create Encounter'
 				
-				expect{click_link 'delete'}.to change{Encounter.count}.by 1
+				expect{click_link 'delete'}.to change{Encounter.count}.by -1
 			end
 			it "displays all encounters" do
 				select @contact.first_name, from: 'Contact'
@@ -61,7 +61,7 @@ describe "Encounters" do
 				select '40', from: 'Duration'
 				click_button 'Create Encounter'
 				visit encounters_path
-				expect(page).to have_content('Contact',count:2)
+				expect(page).to have_css('div#encounters > div',count:2)
 			end
 		end
 		describe "dialog" do

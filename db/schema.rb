@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219072524) do
+ActiveRecord::Schema.define(:version => 20121220185809) do
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(:version => 20121219072524) do
 
   add_index "decounters", ["user_id"], :name => "index_decounters_on_user_id"
 
+  create_table "dialogs", :force => true do |t|
+    t.text     "content"
+    t.integer  "encounter_id"
+    t.integer  "contact_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "dialogs", ["contact_id"], :name => "index_dialogs_on_contact_id"
+  add_index "dialogs", ["encounter_id"], :name => "index_dialogs_on_encounter_id"
+  add_index "dialogs", ["user_id"], :name => "index_dialogs_on_user_id"
+
   create_table "encounters", :force => true do |t|
     t.integer  "contact_id"
     t.datetime "created_at", :null => false
@@ -55,6 +68,12 @@ ActiveRecord::Schema.define(:version => 20121219072524) do
   end
 
   add_index "newcounters", ["contact_id"], :name => "index_newcounters_on_contact_id"
+
+  create_table "topics", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

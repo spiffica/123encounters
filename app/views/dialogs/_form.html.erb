@@ -1,0 +1,6 @@
+<%= simple_form_for [@encounter,@dialog] do |f| %>
+	<%= f.hidden_field :contact_id, value: @encounter.contact.id %>
+	<%#= f.hidden_field :topic_id, value: placeholder %>
+	<%= f.input :content %>
+	<%= f.submit %>
+<% end %>

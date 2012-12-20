@@ -1,5 +1,10 @@
 Encounters::Application.routes.draw do
 
+  resources :topics
+
+
+  get "dialogs/new"
+
   #get "encounters/new"
 
   # get "users/show"
@@ -10,7 +15,9 @@ Encounters::Application.routes.draw do
 
   resource :user, only: [:show] 
   resources :contacts
-  resources :encounters
+  resources :encounters do
+    resources :dialogs
+  end
 
   root :to => 'users#show'
 

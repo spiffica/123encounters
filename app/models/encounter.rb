@@ -1,5 +1,5 @@
 # == Schema Information
-#
+# 
 # Table name: encounters
 #
 #  id         :integer          not null, primary key
@@ -14,6 +14,7 @@
 class Encounter < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
+  has_many :dialogs, dependent: :destroy
   attr_accessible :time_of, :duration, :contact_id
 
   validates :contact_id, presence: true,

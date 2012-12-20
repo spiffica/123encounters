@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#
+# 
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :contacts, dependent: :destroy
   has_many :encounters, dependent: :destroy
+  has_many :dialogs, dependent: :destroy
 
 
 end

@@ -1,5 +1,6 @@
 <%= simple_form_for @encounter do |f| %>
-	<%= f.input :contact_id, collection: @contacts, required: true, label_method: :first_name %>
+	<%= f.input :contact_id, collection: @contacts, required: true, 
+		label_method: :first_name %>
 	<%= f.input :time_of %>
 	<%= f.input :duration, label: "Duration(minutes)", collection: 1..60 %>
 	<%= f.submit %>
