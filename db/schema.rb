@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121220185809) do
+ActiveRecord::Schema.define(:version => 20121220190709) do
 
   create_table "contacts", :force => true do |t|
     t.string   "first_name"
@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(:version => 20121220185809) do
   add_index "dialogs", ["contact_id"], :name => "index_dialogs_on_contact_id"
   add_index "dialogs", ["encounter_id"], :name => "index_dialogs_on_encounter_id"
   add_index "dialogs", ["user_id"], :name => "index_dialogs_on_user_id"
+
+  create_table "discussions", :force => true do |t|
+    t.integer  "encounter_id"
+    t.integer  "topic_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "encounters", :force => true do |t|
     t.integer  "contact_id"
