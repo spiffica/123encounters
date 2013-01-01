@@ -1,10 +1,12 @@
 <% if dialog.topic %>
 	<div class="dialog" id="dialog-<%= dialog.id %>">
-		<h4><%= link_to dialog.title,topic_path(dialog.topic), class:"topic_link" %></h4>
+		<p id="time"><span id="type"><%= encounter.enc_type %> -> </span><%= dialog.time_of.strftime("%^B %d at %l:%M %P" ) %></p>
+		<h6><%= contact_link encounter.contact %> </h6>
 			<%= simple_format dialog.content %>
-		</p>
+		
 		<%= link_to 'edit', edit_encounter_dialog_path(encounter,dialog) %>
 		<%= link_to 'delete', encounter_dialog_path(encounter,dialog), method: :delete %>
+		<p><%= link_to 'View Encounter', encounter_path(dialog.encounter) %></p>
 		<hr/>
 	</div>
 <% end %>

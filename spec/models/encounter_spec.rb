@@ -9,6 +9,7 @@
 #  user_id    :integer
 #  duration   :integer
 #  time_of    :datetime
+#  enc_type   :string(255)
 #
 
 require 'spec_helper'

@@ -1,8 +1,10 @@
-<div class='encounter' id="encounter-<%= encounter.id %>">
-	<h1>Encounter number is <%= encounter.id %></h1>
-	<h3>Contact: <%= encounter.contact.first_name %></h3>
-	<p>Time: <%= encounter.time_of %></p>
-	<small><%= link_to 'edit', edit_encounter_path(encounter) %></small> |
-	<small><%= link_to 'delete', encounter, method: :delete %></small> |
-	<small><%= link_to 'view', encounter_path(encounter) %></small>
-</div>
+<%= link_to edit_encounter_path(encounter), class:"edit_encounter_link",
+	 title:"edit encounter details" do %>
+	<p id="time"><span id="type"><%= encounter.enc_type %> -> </span><%= encounter.time_of.strftime("%^B %d at %l:%M %P" ) %></p>
+<% end %>
+<h6><%= contact_link encounter.contact %> </h6>
+<% if encounter.dialogs.any? %>
+	<% encounter.dialogs.each do |d| %>
+		<%= render 'dialogs/dialog', :dialog => d, :encounter => encounter %>
+	<% end %>
+<% end %>

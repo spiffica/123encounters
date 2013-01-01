@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = current_user.topics.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,10 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.find(params[:id])   
+    @dialogs = Dialog.joins(:topic, :encounter => [:contact]).
+      where(:topic_id => @topic.id).order("encounters.time_of ASC")
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +27,7 @@ class TopicsController < ApplicationController
   # GET /topics/new
   # GET /topics/new.json
   def new
-    @topic = Topic.new
+    @topic = current_user.topics.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +43,14 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    @topic = Topic.new(params[:topic])
+    @topic = current_user.topics.build(params[:topic])
+    @encounter = Encounter.find(session[:encounter_key])
+
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        session[:topic_key] = @topic.id
+        format.html { redirect_to encounter_path(@encounter), notice: 'Topic was successfully created.' }
         format.json { render json: @topic, status: :created, location: @topic }
       else
         format.html { render action: "new" }

@@ -5,20 +5,21 @@
 #  id           :integer          not null, primary key
 #  content      :text
 #  encounter_id :integer
-#  contact_id   :integer 
-#  user_id      :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  topic_id     :integer
 #
 
 class Dialog < ActiveRecord::Base
   belongs_to :encounter
-  belongs_to :contact#, through: :encounter 
-  has_one :user, through: :encounter
-  attr_accessible :content, :contact_id
+  belongs_to :topic
+  
+  attr_accessible :content, :topic_id
 
-  validates :contact_id, inclusion: { in: lambda { |d| d.user.contacts.
-  						map { |c| c.id }}}
+  delegate :full_name, :time_of, to: :encounter
+  delegate :title, to: :topic
+
+  validates :topic_id, presence: true
 
 
 end

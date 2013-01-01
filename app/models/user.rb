@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :contacts, dependent: :destroy
   has_many :encounters, dependent: :destroy
-  has_many :dialogs, dependent: :destroy
+  has_many :topics, dependent: :destroy
 
 
 end

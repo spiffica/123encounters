@@ -1,4 +1,7 @@
 <p>This is the Index page for Encounters</p>
+<%= link_to 'New Encounter', new_encounter_path, class:'btn btn-info' %>
 <div id='encounters'>
-	<%= render @encounters, :encounter => @encounter %>
+	<%= @encounters.each do |e| %>
+		<%= render 'encounter_summary', :encounter => e %>
+	<% end %>
 </div>

@@ -14,6 +14,7 @@ Encounters::Application.routes.draw do
 
 
   resource :user, only: [:show] 
+  resources :topics
   resources :contacts
   resources :encounters do
     resources :dialogs

@@ -1,3 +1,15 @@
 // Place all the styles related to the dialogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+p#time {
+	float: right;
+}
+span#type {
+	font-size: .8em;
+	text-transform: uppercase;
+	font-style: italic;
+	font-weight: bold;
+}
+textarea#dialog_content {
+	width: 70%;
+}

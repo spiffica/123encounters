@@ -11,7 +11,19 @@ FactoryGirl.define do
 		factory :bad_email do
 			email 'none'
 		end
-
 	end
-
+	factory :encounter do
+		contact
+		user
+	end
+	factory :topic do
+		user
+		sequence(:title) { |t| "Topic#{t}"}
+	end
+	factory :dialog do
+		sequence(:content) { |c| "Content#{c}"}
+		encounter
+		topic
+	end
 end
+ 

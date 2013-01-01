@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @topic.title %>
+  <h3>Topic: <span><%= @topic.title %></span></h3>
+  
 </p>
+<div>
+	<h4>Dialogs</h4>
+		<% @dialogs.each do |d| %>
+			<%= render 'dialogs/dialog_for_topic', :dialog => d, :encounter => d.encounter %>
+		<% end %>
+</div>
 
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Back', :back %>

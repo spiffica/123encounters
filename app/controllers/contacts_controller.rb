@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-
+ 
 	def index
 		@contacts = current_user.contacts.order(:last_name)
 	end
@@ -20,7 +20,8 @@ class ContactsController < ApplicationController
 		@contact = current_user.contacts.build(params[:contact])
 		respond_to do |format|
 			if @contact.save
-				format.html { redirect_to contacts_path } 
+				session[:contact_key] = @contact.id
+				format.html { redirect_to new_encounter_path } 
 			else
 				format.html { render :new }
 			end
