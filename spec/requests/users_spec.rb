@@ -63,5 +63,9 @@ describe "Users" do
 			end
 		end
 
+		# begin planning; site backend wired up
+
+		# user is signed in and on 
+
 	end
 end
