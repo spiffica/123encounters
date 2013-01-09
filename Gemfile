@@ -33,6 +33,7 @@ end
 
 group :development do
 	gem 'annotate'
+	gem 'pry-rails'
 end
 
 
