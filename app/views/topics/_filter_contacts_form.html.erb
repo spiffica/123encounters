@@ -1,0 +1,5 @@
+<% @dialogs.each do |d| %>
+	<input type="checkbox" checked="checked" class="contact_check" 
+		id="contact_<%= d.contact_id%>"> 
+		<%= d.full_name %>
+<% end %>

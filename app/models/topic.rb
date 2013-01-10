@@ -13,5 +13,8 @@ class Topic < ActiveRecord::Base
 	belongs_to :user
 	has_many :dialogs
 	has_many :encounters, through: :dialogs
-  attr_accessible :title
+  attr_accessible :title, :background
+
+  validates :title, presence: true
+
 end

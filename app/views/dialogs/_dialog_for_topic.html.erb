@@ -1,5 +1,5 @@
 <% if dialog.topic %>
-	<div class="dialog" id="dialog-<%= dialog.id %>">
+	<div class="dialog contact_<%= encounter.contact_id %>" id="dialog_<%= dialog.id %>">
 		<p id="time"><span id="type"><%= encounter.enc_type %> -> </span><%= dialog.time_of.strftime("%^B %d at %l:%M %P" ) %></p>
 		<h6><%= contact_link encounter.contact %> </h6>
 			<%= simple_format dialog.content %>

@@ -71,7 +71,7 @@ describe "Encounters" do
 				click_button 'Create Encounter'
 
 				expect(current_path).to eq encounter_path 1
-				expect(page).to have_css('form#dialog')
+				expect(page).to have_css('form#new_dialog')
 			end
 		end
 	end

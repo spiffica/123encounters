@@ -34,6 +34,7 @@ end
 group :development do
 	gem 'annotate'
 	gem 'pry-rails'
+	gem 'quiet_assets'
 end
 
 

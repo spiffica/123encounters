@@ -1,8 +1,10 @@
-<%= link_to edit_encounter_path(encounter), class:"edit_encounter_link",
-	 title:"edit encounter details" do %>
+
+<div id="encounter_details" class="well">
+	<h6><%= contact_link encounter.contact %> </h6>
 	<p id="time"><span id="type"><%= encounter.enc_type %> -> </span><%= encounter.time_of.strftime("%^B %d at %l:%M %P" ) %></p>
-<% end %>
-<h6><%= contact_link encounter.contact %> </h6>
+	<%= link_to 'edit',edit_encounter_path(encounter), class:"edit_encounter_link" %> |
+	<%= link_to 'delete', encounter_path(encounter), method: :delete, confirm: "Are you sure you want to delete this encounter and all its dialogs?" %>
+</div>
 <% if encounter.dialogs.any? %>
 	<% encounter.dialogs.each do |d| %>
 		<%= render 'dialogs/dialog', :dialog => d, :encounter => encounter %>

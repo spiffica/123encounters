@@ -23,8 +23,7 @@ class Contact < ActiveRecord::Base
   validates :email, allow_blank: true, format: { with: VALID_EMAIL_REGEX}
   # default_scope where(:user_id => self.user.id)
 
-  # def full_name
-  # 	"#{first_name} #{last_name}"
-  # end
-  
+  def full_name
+  	"#{first_name} #{last_name}"
+  end
 end

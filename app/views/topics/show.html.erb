@@ -1,11 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h3>Topic: <span><%= @topic.title %></span></h3>
-  
-</p>
-<div>
+<h3>Topic: <span><%= @topic.title %></span></h3>
+<% unless @topic.background.blank? %>
+	<div class="background well">
+		<h5>Background</h5>
+		<%= simple_format @topic.background %>
+	</div>
+<% end %>
+
+<div class="dialogs">
 	<h4>Dialogs</h4>
+	<p>Filter by Contacts: <span><%= render 'filter_contacts_form' %></span></p>
 		<% @dialogs.each do |d| %>
 			<%= render 'dialogs/dialog_for_topic', :dialog => d, :encounter => d.encounter %>
 		<% end %>

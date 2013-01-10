@@ -100,6 +100,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+
   #only way that I could get visit, fill_in etc to work
   module ::RSpec::Core
     class ExampleGroup
