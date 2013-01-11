@@ -20,6 +20,7 @@ class Dialog < ActiveRecord::Base
   delegate :title, to: :topic
 
   validates :topic_id, presence: true
+  validates :encounter_id, presence: true
 
 
 end

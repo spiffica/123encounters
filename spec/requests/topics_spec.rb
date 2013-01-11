@@ -4,8 +4,11 @@ require 'spec_helper'
 describe "Topics" do
 	before :each do
 		# include RequestHelpers
-		sign_up #user
-		click_link "New Encounter"
+		sign_up 
+		visit new_topic_path
+		fill_in "Title", with: "Bad Hair"
+		visit new_encounter_path
+
 		# create encounter
 		
 	end
@@ -13,13 +16,12 @@ describe "Topics" do
 		expect(current_path).to eql(new_encounter_path)
 	end
 	it "accepts title and background info in form", js: true do
-		create_contact "jenny"
-		click_button "Create Encounter"
-		click_button "New Topic"
-		fill_in "Title", with: "Junk Mail"
-		# create_topic "Annoying shit"
-		expect(page).to have_content("New topic")
-		#this test hangs for 1 minute and shows Timeout error WTF!!
+		visit new_topic_path
+		fill_in "Title", with: "Bad Hair"
+		fill_in "Background", with: "Reminiscing about all the bad hair of 
+		the 80's"
+		click_button "Create Topic"
+		expect(Topic.count).to eql 1
 	end
 
 
