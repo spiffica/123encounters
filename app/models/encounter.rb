@@ -15,7 +15,7 @@
 class Encounter < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
-  has_many :dialogs
+  has_many :dialogs, dependent: :destroy
   has_many :topics, through: :dialogs
   attr_accessible :time_of, :duration, :contact_id, :enc_type
 

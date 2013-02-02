@@ -16,7 +16,7 @@ class Dialog < ActiveRecord::Base
   
   attr_accessible :content, :topic_id
 
-  delegate :full_name, :contact_id, :time_of, to: :encounter
+  delegate :full_name, :contact, :time_of, to: :encounter
   delegate :title, to: :topic
 
   validates :topic_id, presence: true

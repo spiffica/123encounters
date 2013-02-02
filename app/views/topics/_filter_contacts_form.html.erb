@@ -1,5 +1,11 @@
-<% @dialogs.each do |d| %>
-	<input type="checkbox" checked="checked" class="contact_check" 
-		id="contact_<%= d.contact_id%>"> 
-		<%= d.full_name %>
-<% end %>
+<%# TODO refactor into a helper method %>
+<%# uniq_contact_ids = @dialogs.inject([]) do |result,d| %>
+	<%# result << d.contact  %>
+	<%# result.uniq %>
+<%# end %>
+<%# uniq_contacts(dialogs).each do |uc| %>
+<% topic.unique_contacts.each do |uc| %>
+		<input type="checkbox" checked="checked" class="contact_check" 
+			id="contact_<%= uc.id%>"> 
+			<span class="contact" id="contact_<%= uc.id%>"><%= uc.full_name %></span>
+	<% end %>

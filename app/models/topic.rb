@@ -13,8 +13,13 @@ class Topic < ActiveRecord::Base
 	belongs_to :user
 	has_many :dialogs
 	has_many :encounters, through: :dialogs
+	has_many :contacts, through: :encounters
   attr_accessible :title, :background
 
   validates :title, presence: true
 
+  def unique_contacts
+  	contacts.uniq
+  end
+  
 end
