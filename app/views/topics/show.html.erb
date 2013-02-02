@@ -10,7 +10,11 @@
 
 <div class="dialogs">
 	<h4>Dialogs</h4>
-	<p>Filter by Contacts: <span id="contact_list"><%= render 'filter_contacts_form', :topic => @topic  %></span></p>
+	<p>Filter by Contacts: 
+		<span id="contact_list">
+			<%= render 'filter_contacts_form', :topic => @topic  %>
+		</span>
+	</p>
 		<% @dialogs.each do |d| %>
 			<%= render 'dialogs/dialog_for_topic', :dialog => d, :encounter => d.encounter %>
 		<% end %>
