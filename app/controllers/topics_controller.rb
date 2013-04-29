@@ -14,10 +14,10 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])   
-    @dialogs = @topic.dialogs.order("encounters.time_of ASC")    
-    # @dialogs = Dialog.joins(:topic, :encounter => [:contact]).
-    #   where(:topic_id => @topic.id).order("encounters.time_of ASC")    
-      # binding.pry
+    #@dialogs = @topic.dialogs.order("encounters.time_of ASC")    
+     @dialogs = Dialog.joins(:topic, :encounter => [:contact]).
+       where(:topic_id => @topic.id).order("encounters.time_of ASC")    
+    #   binding.pry
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @topic }
