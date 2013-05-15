@@ -3,7 +3,7 @@
 		label_method: :first_name %>
 	<button id="new_contact"><i class="icon-plus-sign"></i>New Contact</button>
 	<%= f.input :enc_type, collection: Encounter::TYPE, label: false, prompt: 'Select Encounter Method' %>
-	<%= f.input :time_of %>
+  <%= f.input :time_of %>
 	<%= f.input :duration, label: "Duration(minutes)", collection: 1..60 %>
 	<%= f.submit %>
 <% end %>

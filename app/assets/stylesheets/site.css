@@ -16,3 +16,18 @@ a#home {
 span#login {
 	float: right;
 }
+div#sidebar {
+  float: left;
+  padding: 0 20px;
+  border-right: solid black .2;
+  background-color: yellow;
+  height: 500px;
+}
+div#main {
+  background-color: red;
+  float: right;
+  width:75%;
+}
+div#debug {
+  clear: both;
+}

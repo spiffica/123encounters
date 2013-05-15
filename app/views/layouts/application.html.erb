@@ -8,7 +8,9 @@
 		</head>
 		<body>
 			<div class="my_container">
-				<%= render 'layouts/header' %>
+        <div>
+				  <%= render 'layouts/header' %>
+        </div>
 					<% if flash[:success] %>
 						<p id="success"><%= flash[:success] %></p>
 					<% end %>
@@ -17,7 +19,12 @@
 					<% end %>
 				<p id="notice"><%= notice %></p>
 				<p id="alert"><%= alert %></p>
-				<%= yield %>
+        <div id="main">
+				  <%= yield %>
+        </div>
+        <div id="sidebar">
+          this is a side column
+        </div>
 			</div>
 				<div id="debug">
 					<% if Rails.env.development? %>
