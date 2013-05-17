@@ -7,31 +7,27 @@
 		  <%= csrf_meta_tags %>
 		</head>
 		<body>
-			<div class="my_container">
-        <div>
-				  <%= render 'layouts/header' %>
-        </div>
-					<% if flash[:success] %>
-						<p id="success"><%= flash[:success] %></p>
-					<% end %>
-					<% if flash[:error] %>
-						<p id="error"><%= flash[:error] %></p>
-					<% end %>
-				<p id="notice"><%= notice %></p>
-				<p id="alert"><%= alert %></p>
-        <div id="main">
-				  <%= yield %>
-        </div>
-        <div id="sidebar">
-          this is a side column
+      <%= render 'layouts/header' %>
+			<div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span12 error_container">
+            <% flash.each do |key, value| %>
+              <div class="alert alert-<%= key %>">
+                <%= value %>
+              </div>
+            <% end %>
+          </div>
         </div>
 			</div>
-				<div id="debug">
-					<% if Rails.env.development? %>
-						<%= debug(params)  %>
-						<h2>Session</h2>
-						<p><%= session.inspect %></p>
-					<% end %>
+      
+      <%= yield %>
+
+      <div id="debug">
+        <% if Rails.env.development? %>
+          <%= debug(params)  %>
+          <h2>Session</h2>
+          <p><%= session.inspect %></p>
+        <% end %>
 				</div>
 		</body>
 	</html>

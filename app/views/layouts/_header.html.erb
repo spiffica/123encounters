@@ -1,4 +1,12 @@
-<%= link_to 'Home', root_path, id: 'home' %>
-<% if user_signed_in? %>
-	<span id='login'>logged in as <%= current_user.email %> | <%= link_to 'logout', '/users/sign_out', method: :delete %></span>
-<% end %>
+<header class="navbar">
+  <div class="navbar-inner"navbar-inner>
+    <div class="container-fluid">
+      <%= link_to "Encounters", root_path, id:"logo" %>
+      <nav class="nav pull-right">
+        <% if user_signed_in? %>
+          <span id='login'>logged in as <%= current_user.email %> | <%= link_to 'logout', '/users/sign_out', method: :delete, class:'btn' %></span>
+        <% end %>
+      </nav>
+    </div>
+  </div>
+</header>

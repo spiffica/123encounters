@@ -1,5 +1,7 @@
 Encounters::Application.routes.draw do
 
+  get "dashboards/show"
+
   resources :topics
 
 
@@ -12,7 +14,7 @@ Encounters::Application.routes.draw do
   devise_for :users
 
 
-
+  resource :dashboard, only: [:show]
   resource :user, only: [:show] 
   resources :topics, except: [:new]
   resources :contacts

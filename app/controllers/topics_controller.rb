@@ -17,7 +17,6 @@ class TopicsController < ApplicationController
     #@dialogs = @topic.dialogs.order("encounters.time_of ASC")    
      @dialogs = Dialog.joins(:topic, :encounter => [:contact]).
        where(:topic_id => @topic.id).order("encounters.time_of ASC")    
-    #   binding.pry
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @topic }
@@ -52,7 +51,6 @@ class TopicsController < ApplicationController
         session[:topic_key] = @topic.id
         format.html { redirect_to encounter_path(@encounter), notice: 'Topic was successfully created.' }
         format.json { render json: @topic, status: :created, location: @topic }
-        binding.pry
       else
         format.html { render action: "new" }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
