@@ -1,0 +1,29 @@
+
+
+
+<h3><%= topic.title %></h3>
+<button class="show_dialogs_btn">Show Dialogs</button>
+<% unless topic.background.blank? %>
+	<div class="background well">
+		<h5>Background</h5>
+		<%= simple_format topic.background %>
+	</div>
+<% end %>
+
+<div class="dialogs hide">
+	<h4>Dialogs</h4>
+	<p>Filter by Contacts: 
+		<span id="contact_list">
+			<%= render 'topics/filter_contacts_form', :topic => topic  %>
+		</span>
+	</p>
+  <% if dialogs.any? %>
+		<% dialogs.each do |d| %>
+			<%= render 'dialogs/dialog_for_topic', :dialog => d, :encounter => d.encounter %>
+		<% end %>
+  <% end %>
+</div>
+
+
+<%= link_to 'Edit', edit_topic_path(topic) %> |
+<%= link_to 'Back', :back %>

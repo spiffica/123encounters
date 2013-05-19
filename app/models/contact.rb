@@ -17,6 +17,8 @@
 class Contact < ActiveRecord::Base
   belongs_to :user
   has_many :encounters, dependent: :destroy
+  has_many :topics, through: :encounters
+  has_many :dialogs, through: :encounters
   attr_accessible :company, :email, :first_name, :last_name, :phone, :position
 
   validates :first_name, presence: true

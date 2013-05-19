@@ -1,5 +1,8 @@
 <li>
-  <%= link_to contact.first_name, contact_path(contact), 
-    id: dom_id(contact), class: 'contact',
-    remote: true %>
+  <%= link_to_unless_current(contact.first_name, contact_path(contact), 
+                             id: dom_id(contact), class: 'contact') do
+    link_to(contact.first_name, contact_path(contact), class: 'contact active')
+  end
+  # ,data: {:'contact-id' => contact.id},remote: true
+  %>
 </li>

@@ -1,12 +1,16 @@
 
 <div id="encounter_details" class="well">
-	<h6><%= contact_link encounter.contact %> </h6>
+	<h6><%= full_name encounter.contact %> </h6>
 	<p id="time"><span id="type"><%= encounter.enc_type %> -> </span><%= encounter.time_of.strftime("%^B %d at %l:%M %P" ) %></p>
 	<%= link_to 'edit',edit_encounter_path(encounter), class:"edit_encounter_link" %> |
 	<%= link_to 'delete', encounter_path(encounter), method: :delete, confirm: "Are you sure you want to delete this encounter and all its dialogs?" %>
+  <button class="show_topics_btn btn-block btn-info">Show Topics</button>
+  <% if encounter.topics.any? %>
+    <div id="<%= dom_id encounter %>" class='hide topics'>
+      <% encounter.topics.each do |t| %>
+        <%= render 'topics/topic', :topic => t, :dialogs => t.dialogs %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-<% if encounter.dialogs.any? %>
-	<% encounter.dialogs.each do |d| %>
-		<%= render 'dialogs/dialog', :dialog => d, :encounter => encounter %>
-	<% end %>
-<% end %>
+

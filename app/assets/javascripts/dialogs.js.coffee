@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('button.show_dialogs_btn').click ->
+    btn = $(this)
+    btn.next('div').toggle 200, "linear"
+    tx = btn.text()
+    tx = if (tx == 'Show Dialogs') then 'Hide Dialogs' else 'Show Dialogs'
+    btn.text(tx)

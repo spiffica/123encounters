@@ -1,20 +1,8 @@
-<ul>
-  <li></li>
-  <li>
-      <%= link_to contact.first_name, contact_path(contact), id: dom_id(contact) %>
-  </li>
-</ul>
-
-      <div class="row-fluid main_area">
-        <div class="span3 left_sidebar">
-          <ul class="nav nav-list">
-            <li class="nav-header">Contacts</li>
-            <li class="active"><a href="#">xPersonal</a></li>
-            <li><a href="#">xBusiness</a></li>
-            <ul>
-              <li><a href="#">Telus</a></li>
-              <li><a href="#">Rogers</a></li>
-            </ul>
-            <li><a href="#">xOther</a></li>
-          </ul>
-        </div>
+<div class="span2 left_sidebar">
+  <ul class="nav nav-list">
+    <li class="nav-header"><i class="icon-user"></i>Contacts
+      <%= link_to "Add",new_contact_path, id:"add_contact",class:"btn", remote: true %>
+    </li>
+   <%= render @contacts %>
+  </ul>
+</div>

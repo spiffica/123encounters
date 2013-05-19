@@ -6,7 +6,7 @@ class EncountersController < ApplicationController
 
   def new
   	@encounter = current_user.encounters.build
-  	@contacts = current_user.contacts.all 
+# 	@contacts = current_user.contacts.all 
   end
 
   def show
@@ -15,21 +15,21 @@ class EncountersController < ApplicationController
     # @topic = Topic.find(session[:topic_key])
   	# @encounters = current_user.encounters.order("time_of ASC")
     @topics = current_user.topics.all
-  	session[:encounter_key] = @encounter.id
+  	#session[:encounter_key] = @encounter.id
   end
 
   def edit
   	@encounter = Encounter.find(params[:id])
-  	@contacts = current_user.contacts.all
-  	session[:encounter_key] = @encounter.id
+  	#@contacts = current_user.contacts.all
+  	#session[:encounter_key] = @encounter.id
   end
 
   def create
   	@encounter = current_user.encounters.build(params[:encounter])
   	respond_to do |format|
   		if @encounter.save
-  			session[:encounter_key] = @encounter.id  
-        session[:contact_key] = nil			
+  			#session[:encounter_key] = @encounter.id  
+        #session[:contact_key] = nil			
   			format.html { redirect_to @encounter }
   		else
   			format.html do

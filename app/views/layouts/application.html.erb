@@ -20,7 +20,14 @@
         </div>
 			</div>
       
-      <%= yield %>
+      <div class="row-fluid main_area">
+        <% if current_user %>
+          <%= render 'contacts/contact_list' %>
+        <% end %>
+        <div class="span10 main_content">
+          <%= yield %>
+        </div>
+      </div>
 
       <div id="debug">
         <% if Rails.env.development? %>

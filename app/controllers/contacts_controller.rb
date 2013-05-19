@@ -6,6 +6,8 @@ class ContactsController < ApplicationController
 
 	def show
 		@contact = current_user.contacts.find(params[:id])
+    @encounters = @contact.encounters
+    @topics = @contact.topics
 	end
 
 	def new

@@ -1,6 +1,6 @@
 
 <% topic.unique_contacts.each do |uc| %>
 		<input type="checkbox" checked="checked" class="contact_check" 
-			id="contact_<%= uc.id%>"> 
+			id="contact_<%= uc.id%>">
 			<span class="contact" id="contact_<%= uc.id%>"><%= uc.full_name %></span>
 	<% end %>

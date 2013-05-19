@@ -1,16 +1,5 @@
 Encounters::Application.routes.draw do
 
-  get "dashboards/show"
-
-  resources :topics
-
-
-  get "dialogs/new"
-
-  #get "encounters/new"
-
-  # get "users/show"
-
   devise_for :users
 
 
@@ -22,7 +11,7 @@ Encounters::Application.routes.draw do
     resources :dialogs
   end
 
-  root :to => 'users#show'
+  root :to => 'dashboards#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
