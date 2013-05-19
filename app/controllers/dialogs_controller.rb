@@ -1,5 +1,5 @@
 class DialogsController < ApplicationController
-	before_filter :set_encounter, except: [:update]
+	#before_filter :set_encounter, except: [:update]
 
   def new 
   	@dialog = @encounter.dialogs.build
@@ -7,6 +7,7 @@ class DialogsController < ApplicationController
   end
 
   def edit
+    @encounter = Encounter.find(params[:encounter_id])
     @dialog = Dialog.find(params[:id])
     @topics = current_user.topics.all
     session[:return_to] = request.referer

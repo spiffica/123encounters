@@ -66,5 +66,5 @@ class EncountersController < ApplicationController
 				redirect_to encounters_path
 			end
 		end
-	end
+  end
 end

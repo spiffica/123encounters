@@ -27,4 +27,6 @@ class Encounter < ActiveRecord::Base
   					inclusion: { in: lambda {|enc| enc.user.contacts.map { |c| c.id}}}
 
   delegate :full_name, to: :contact
+
+
 end

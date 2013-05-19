@@ -1,10 +1,10 @@
 <div id="dialog_form">
-		<%= simple_form_for [@encounter,@dialog] do |f| %>
-		<%= f.input :topic_id, collection: @topics, required: true, prompt: "-- Choose a 
-			Topic --", :input_html => { id: 'topic_div' }, :selected => session[:topic_key].to_i %>
+		<%= simple_form_for [encounter,@dialog] do |f| %>
+      <%= f.association :topic, collection: @topics, required: true, label_method: :title,
+          prompt:"--Choose a topic--" %>
 		<button id="new_topic"class="btn btn-info"><i class="icon-plus-sign"></i>New Topic</button>
 
-		<%= f.input :content, label: "Dialog",input_html: {rows:5} %>
+		<%= f.input :content, label: "What was said?",input_html: {rows:5} %>
 		<%= f.submit %>
 	<% end %>
 </div>
