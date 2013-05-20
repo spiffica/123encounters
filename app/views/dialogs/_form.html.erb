@@ -1,6 +1,6 @@
 <div id="dialog_form">
-		<%= simple_form_for [encounter,@dialog] do |f| %>
-      <%= f.association :topic, collection: @topics, required: true, label_method: :title,
+		<%= simple_form_for [encounter, dialog] do |f| %>
+      <%= f.association :topic, collection: current_user.topics, required: true, label_method: :title,
           prompt:"--Choose a topic--" %>
 		<button id="new_topic"class="btn btn-info"><i class="icon-plus-sign"></i>New Topic</button>
 

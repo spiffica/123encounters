@@ -12,29 +12,23 @@ class EncountersController < ApplicationController
   def show
   	@encounter = Encounter.find(params[:id])
   	@dialog = @encounter.dialogs.build
-    # @topic = Topic.find(session[:topic_key])
-  	# @encounters = current_user.encounters.order("time_of ASC")
     @topics = current_user.topics.all
-  	#session[:encounter_key] = @encounter.id
   end
 
   def edit
   	@encounter = Encounter.find(params[:id])
-  	#@contacts = current_user.contacts.all
-  	#session[:encounter_key] = @encounter.id
   end
 
   def create
   	@encounter = current_user.encounters.build(params[:encounter])
   	respond_to do |format|
   		if @encounter.save
-  			session[:current_encounter] = @encounter.id  
-        #session[:contact_key] = nil			
+  			session[:current_encounter] = @encounter.id
   			format.html { redirect_to @encounter }
   		else
   			format.html do
   				@contacts = current_user.contacts.all
-  				render :new 
+  				render :new
   			end
   		end
   	end

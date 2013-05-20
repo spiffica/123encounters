@@ -9,8 +9,3 @@ $ ->
     tx = if (tx == 'Show Topics') then 'Hide Topics' else 'Show Topics'
     btn.text(tx)
 
-    #this is having conflicts with above. ???? works if placed first
-    # but then the above code doesn't work
-	$('span#contact_list input[type=checkbox]').click ->
-		id = $(this).attr('id')
-		$('div.' + id).toggle()
