@@ -1,3 +1,4 @@
 <h1>Dialogs#new</h1>
 <p>Find me in app/views/dialogs/new.html.erb</p>
-<%= render 'form' %>
+<%= render 'form', :encounter => Encounter.find(active_encounter),
+     :dialog => Dialog.new(params[:my_topic]) %>

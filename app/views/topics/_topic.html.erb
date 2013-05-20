@@ -1,7 +1,10 @@
-
-
-
 <h3><%= topic.title %></h3>
+<% if active_encounter %>
+  <%= link_to "Add topic to current encounter",
+    new_encounter_dialog_path(:encounter_id => active_encounter,
+                              :my_topic => {:topic_id => topic.id}),
+                             class: 'btn btn-info' %>
+<% end %>
 <button class="show_dialogs_btn">Show Dialogs</button>
 <% unless topic.background.blank? %>
 	<div class="background well">
