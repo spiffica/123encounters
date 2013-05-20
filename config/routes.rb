@@ -6,9 +6,11 @@ Encounters::Application.routes.draw do
   resource :dashboard, only: [:show]
   resource :user, only: [:show] 
   resources :topics, except: [:new]
-  resources :contacts
-  resources :encounters do
-    resources :dialogs
+  resources :contacts do
+    resources :encounters, only: [:new]
+  end
+  resources :encounters, except: [:new,:index] do
+    resources :dialogs, except: [:new, :index]
   end
 
   root :to => 'dashboards#show'

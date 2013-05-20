@@ -23,7 +23,7 @@ class ContactsController < ApplicationController
 		respond_to do |format|
 			if @contact.save
 				session[:contact_key] = @contact.id
-				format.html { redirect_to new_encounter_path } 
+				format.html { redirect_to new_contact_encounter_path(@contact) } 
 			else
 				format.html { render :new }
 			end

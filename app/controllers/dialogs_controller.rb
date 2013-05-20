@@ -1,11 +1,6 @@
 class DialogsController < ApplicationController
 	#before_filter :set_encounter, except: [:update]
 
-  def new 
-  	@dialog = @encounter.dialogs.build
-    @topics = current_user.topics.all
-  end
-
   def edit
     @encounter = Encounter.find(params[:encounter_id])
     @dialog = Dialog.find(params[:id])
@@ -14,6 +9,7 @@ class DialogsController < ApplicationController
   end
 
   def create
+    @encounter = Encounter.find(params[:encounter_id])
   	@dialog = @encounter.dialogs.build(params[:dialog])
   	respond_to do |format|
   		if @dialog.save

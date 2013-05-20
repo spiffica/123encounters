@@ -5,8 +5,8 @@ class EncountersController < ApplicationController
 	end
 
   def new
-  	@encounter = current_user.encounters.build
-# 	@contacts = current_user.contacts.all 
+    @contact = Contact.find(params[:contact_id])
+  	@encounter = @contact.encounters.build
   end
 
   def show
@@ -28,7 +28,7 @@ class EncountersController < ApplicationController
   	@encounter = current_user.encounters.build(params[:encounter])
   	respond_to do |format|
   		if @encounter.save
-  			#session[:encounter_key] = @encounter.id  
+  			session[:current_encounter] = @encounter.id  
         #session[:contact_key] = nil			
   			format.html { redirect_to @encounter }
   		else

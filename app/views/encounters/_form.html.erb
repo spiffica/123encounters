@@ -1,5 +1,6 @@
 <%= simple_form_for @encounter do |f| %>
-  <%= f.association :contact, collection: @contacts, label_method: :first_name, prompt: "Who?" %>
+  <%= f.association :contact, collection: @contacts,
+    label_method: :first_name %>
 	<%= f.input :enc_type, collection: Encounter::TYPE, label: false, prompt: 'Select Encounter Method' %>
   <%= f.input :time_of, as: :date %>
   <%= f.input :time_of, as: :time, :ignore_date => true %>
