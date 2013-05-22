@@ -1,16 +1,17 @@
-<div class="tabbable">
-  <ul class="nav nav-pills">
-    <li class="active"><a href="#encounters-tab" data-toggle="tab">Encounters</a></li>
-    <li><a href="#topics-tab" data-toggle="tab">Topics</a></li>
+<nav class="tab-links">
+  <ul>
+    <li class="active btn" id="encounters"><a href='#encounters'>Encounters</a></li>
+    <li class="btn" id="topics"><a href='#topics'>Topics</a></li>
   </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="encounters-tab">
-      <%= render @encounters %>
-    </div>
-    <div class="tab-pane" id="topics-tab">
-      <% @topics.each do |t| %>
-        <%= render 'topics/topic',:topic => t, :dialogs => t.dialogs %>
-      <% end %>
-    </div>
+</nav>
+<div class="contacts-data">
+  <div class="data-tab" id="encounters-tab">
+    <%= render @encounters %>
   </div>
+  <div class="data-tab" id="topics-tab">
+    <% @topics.each do |t| %>
+      <%= render 'topics/topic',:topic => t, :dialogs => t.dialogs %>
+    <% end %>
+  </div>
+</div>
 <%= link_to "New Encounter", new_contact_encounter_path(@contact), class: 'btn' %>
