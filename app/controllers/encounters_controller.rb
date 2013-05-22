@@ -5,6 +5,7 @@ class EncountersController < ApplicationController
 	end
 
   def new
+    session[:current_encounter] = nil
     @contact = Contact.find(params[:contact_id])
   	@encounter = @contact.encounters.build
   end

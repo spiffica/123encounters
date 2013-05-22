@@ -23,7 +23,6 @@
       <% if session[:current_encounter] %>
         <h4>Current Encounter is: <%= session[:current_encounter] %></h4>
         <%= render 'encounters/encounter', :encounter => active_encounter %>
-        <%= render 'dialogs/form', :dialog => Dialog.new, :encounter => active_encounter %>
       <% end %>
 
       <div class="row-fluid main_area">
