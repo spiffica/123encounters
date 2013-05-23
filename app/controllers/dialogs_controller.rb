@@ -1,5 +1,4 @@
 class DialogsController < ApplicationController
-	#before_filter :set_encounter, except: [:update]
 
   def edit
     @encounter = Encounter.find(params[:encounter_id])
@@ -13,10 +12,10 @@ class DialogsController < ApplicationController
   	@dialog = @encounter.dialogs.build(params[:dialog])
   	respond_to do |format|
   		if @dialog.save
-        session[:topic_key] = @dialog.topic_id
+        #session[:topic_key] = @dialog.topic_id
   			format.html do
   				flash[:success] = "New dialog created"
-  				redirect_to encounter_path @encounter
+  				redirect_to :back
   			end
         format.js
   		else

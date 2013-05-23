@@ -6,8 +6,8 @@ class ContactsController < ApplicationController
 
 	def show
 		@contact = current_user.contacts.find(params[:id])
-    @encounters = @contact.encounters
-    @topics = @contact.topics
+    @encounters = @contact.encounters.includes(:dialogs, :topics)
+    @topics = @contact.topics.uniq
 	end
 
 	def new

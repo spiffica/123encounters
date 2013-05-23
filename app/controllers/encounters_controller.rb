@@ -54,11 +54,12 @@ class EncountersController < ApplicationController
 
   def destroy
   	@encounter = current_user.encounters.find(params[:id])
+    session[:current_encounter] = nil if @encounter.id == session[:current_encounter]
 		@encounter.destroy
   	respond_to do |format|
 			format.html do
 				flash[:success] = "Encounter destroyed" 
-				redirect_to encounters_path
+				redirect_to  root_url
 			end
 		end
   end
