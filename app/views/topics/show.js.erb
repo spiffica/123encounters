@@ -1,0 +1,2 @@
+var topic = "div#<%=j dom_id @topic %>"
+$(topic).append("<%=j render 'dialogs/dialogs', topic: @topic, dialogs: @dialogs %>")

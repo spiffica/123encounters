@@ -11,15 +11,19 @@
 #
 
 class Topic < ActiveRecord::Base
-	belongs_to :user
-	has_many :dialogs
+	belongs_to :user, inverse_of: :topics
+	has_many :dialogs, inverse_of: :topic, dependent: :destroy
 	has_many :encounters, through: :dialogs
 	has_many :contacts, through: :encounters
   attr_accessible :title, :background
 
   validates :title, presence: true
 
+  #default_scope includes(:contacts, :dialogs)
+
   def unique_contacts
+#   Contact.joins(:encounters => :dialogs).
+#     where("dialogs.topic_id = ?", self.id)
   	contacts.uniq
   end
   

@@ -13,15 +13,15 @@
 #
 
 class Encounter < ActiveRecord::Base
-  belongs_to :contact
-  belongs_to :user
-  has_many :dialogs, dependent: :destroy
+  belongs_to :contact, inverse_of: :encounters
+  belongs_to :user, inverse_of: :encounters
+  has_many :dialogs, dependent: :destroy, inverse_of: :encounter
   has_many :topics, through: :dialogs
   attr_accessible :time_of, :duration, :contact_id, :enc_type
 
   TYPE = %w(phone email text in-person other)
 
-  default_scope order("time_of ASC")
+# default_scope includes(:contact, :topics, :dialogs).order("time_of DESC")
 
   validates :contact_id, presence: true,
   					inclusion: { in: lambda {|enc| enc.user.contacts.map { |c| c.id}}}

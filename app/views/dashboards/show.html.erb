@@ -1,7 +1,15 @@
-    <div class="row-fluid">
-      <button id="encounters_btn">Encounters</button>
-      <button id="topics_btn">Topics</button>
-    </div>
-    <div class="row-fluid">
-      <%= render @encounters %>
-    </div>
+<nav class="tab-links">
+  <ul>
+    <li class="active btn" id="encounters"><a href='#encounters'>Encounters</a></li>
+    <li class="btn" id="topics"><a href='#topics'>Topics</a></li>
+  </ul>
+</nav>
+<div class="contacts-data">
+  <div class="row-fluid data-tab" id="encounters-tab">
+    <%= render @dashboard.encounters %>
+    
+  </div>
+  <div class="data-tab" id="topics-tab">
+    <%= render @dashboard.topics %>
+  </div>
+</div>

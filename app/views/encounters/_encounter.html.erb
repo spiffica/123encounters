@@ -7,9 +7,11 @@
   <button class="show_topics_btn btn-block btn-info">Show Topics</button>
   <% if encounter.topics.any? %>
     <div id="<%= dom_id encounter %>" class='hide topics'>
-      <% encounter.topics.each do |t| %>
-        <%= render 'topics/topic', :topic => t, :dialogs => t.dialogs %>
-      <% end %>
+      <ul id="<%= dom_id(encounter) %>_topics">
+        <% encounter.dialogs.each do |d| %>
+          <%= render 'dialogs/dialog', :dialog => d %>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 </div>

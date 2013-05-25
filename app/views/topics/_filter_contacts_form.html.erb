@@ -1,5 +1,5 @@
 
-<% topic.unique_contacts.each do |uc| %>
+<% Contact.joins(:dialogs).select("contacts.*,dialogs.topic_id").where("dialogs.topic_id = ?", topic.id).each do |uc| %>
 		<input type="checkbox" checked="checked" class="contact_check" 
 			id="contact_<%= uc.id%>">
 			<span class="contact" id="contact_<%= uc.id%>"><%= uc.full_name %></span>
