@@ -11,8 +11,8 @@
 #
 
 class Dialog < ActiveRecord::Base
-  belongs_to :encounter
-  belongs_to :topic
+  belongs_to :encounter, inverse_of: :dialogs
+  belongs_to :topic, inverse_of: :dialogs
   
   attr_accessible :content, :topic_id, :new_topic
   attr_accessor :new_topic
@@ -23,6 +23,8 @@ class Dialog < ActiveRecord::Base
   validates :topic_id, presence: true
   validates :encounter_id, presence: true
   
+ #default_scope includes(:encounter, :topic).order('encounters.time_of DESC')
+
   before_validation  :create_topic
   
 

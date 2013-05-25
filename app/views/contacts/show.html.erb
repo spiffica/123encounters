@@ -6,11 +6,12 @@
 </nav>
 <div class="contacts-data">
   <div class="data-tab" id="encounters-tab">
-    <%= render @encounters %>
+    <%= render @encounters, :contact => @contact  %>
+    
   </div>
   <div class="data-tab" id="topics-tab">
-    <% @topics.each do |t| %>
-      <%= render 'topics/topic',:topic => t, :dialogs => t.dialogs %>
+    <% @topics.uniq.each do |t| %>
+     <%= render 'topics/topic',:topic => t, :dialogs => t.dialogs %>
     <% end %>
   </div>
 </div>

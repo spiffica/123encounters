@@ -3,5 +3,7 @@
       <button id="topics_btn">Topics</button>
     </div>
     <div class="row-fluid">
-      <%= render @encounters %>
+      <% @encounters.each do |e| %>
+        <%= render 'encounters/encounter', :encounter => e, :contact => e.contact %>
+      <% end %>
     </div>

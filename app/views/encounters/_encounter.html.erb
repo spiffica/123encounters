@@ -1,6 +1,6 @@
 
 <div id="encounter_details" class="well">
-	<h6><%= full_name encounter.contact %> </h6>
+	<h6><%= full_name contact %> </h6>
 	<p id="time"><span id="type"><%= encounter.enc_type %> -> </span><%= encounter.time_of.strftime("%^B %d at %l:%M %P" ) %></p>
 	<%= link_to 'edit',edit_encounter_path(encounter), class:"edit_encounter_link" %> |
 	<%= link_to 'delete', encounter_path(encounter), method: :delete, confirm: "Are you sure you want to delete this encounter and all its dialogs?" %>

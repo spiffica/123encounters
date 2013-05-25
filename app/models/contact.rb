@@ -15,8 +15,8 @@
 #
 
 class Contact < ActiveRecord::Base
-  belongs_to :user
-  has_many :encounters, dependent: :destroy
+  belongs_to :user, inverse_of: :contacts
+  has_many :encounters, dependent: :destroy, inverse_of: :contact
   has_many :topics, through: :encounters
   has_many :dialogs, through: :encounters
   attr_accessible :company, :email, :first_name, :last_name, :phone, :position
@@ -25,6 +25,7 @@ class Contact < ActiveRecord::Base
   validates :email, allow_blank: true, format: { with: VALID_EMAIL_REGEX}
   # default_scope where(:user_id => self.user.id)
 
+  #scope :full_stack, -> { includes(:encounters) }
 
   def full_name
   	"#{first_name} #{last_name}"
