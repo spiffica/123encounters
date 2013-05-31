@@ -21,7 +21,7 @@ class Encounter < ActiveRecord::Base
 
   TYPE = %w(phone email text in-person other)
 
-# default_scope includes(:contact, :topics, :dialogs).order("time_of DESC")
+  default_scope order("time_of DESC")
 
   validates :contact_id, presence: true,
   					inclusion: { in: lambda {|enc| enc.user.contacts.map { |c| c.id}}}

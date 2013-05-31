@@ -1,32 +1,19 @@
-<h3><%= topic.title %></h3>
-<% if active_encounter %>
-  <%= link_to "Add topic to current encounter",
-    new_encounter_dialog_path(:encounter_id => active_encounter,
-                              :my_topic => {:topic_id => topic.id}),
-                             class: 'btn btn-info' %>
-<% end %>
-<button class="show_dialogs_btn">Show Dialogs</button>
-<% unless topic.background.blank? %>
-	<div class="background well">
-		<h5>Background</h5>
-		<%= simple_format topic.background %>
-	</div>
-<% end %>
-
-<div class="dialogs hide">
-	<h4>Dialogs</h4>
-	<p>Filter by Contacts: 
-		<span class="contact_list">
-			<%= render 'topics/filter_contacts_form', :topic => topic  %>
-		</span>
-	</p>
-  <% if dialogs.any? %>
-		<% dialogs.each do |d| %>
-			<%= render 'dialogs/dialog_for_topic', :dialog => d, :encounter => d.encounter %>
-		<% end %>
+<div id="<%= dom_id topic %>">
+  <h3><%= topic.title %></h3>
+  <% if active_encounter %>
+    <%= link_to "Add topic to current encounter",
+      new_encounter_dialog_path(:encounter_id => active_encounter,
+                                :my_topic => {:topic_id => topic.id}),
+                               class: 'btn btn-info' %>
+  <% end %>
+  
+  <button class="show_dialogs_btn hide">Show Dialogs</button>
+  <%= link_to "Show Dialogs", topic_path(topic),
+    class:"topic-dialogs-link", id: dom_id(topic),remote: true %>
+  <% unless topic.background.blank? %>
+    <div class="background well">
+      <h5>Background</h5>
+      <%= simple_format topic.background %>
+    </div>
   <% end %>
 </div>
-
-
-<%= link_to 'Edit', edit_topic_path(topic) %> |
-<%= link_to 'Back', :back %>

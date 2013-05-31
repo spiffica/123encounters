@@ -4,6 +4,6 @@ class Dashboard
   end
 
   def timeline
-    Timeline.new
+    Timeline.new @user
   end
 end

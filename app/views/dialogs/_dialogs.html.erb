@@ -1,0 +1,13 @@
+<div class="dialogs hide">
+	<h4>Dialogs</h4>
+	<p>Filter by Contacts: 
+		<span class="contact_list">
+			<%= render 'topics/filter_contacts_form', :topic => topic  %>
+		</span>
+	</p>
+  <% if dialogs.any? %>
+		<% dialogs.each do |d| %>
+			<%= render 'dialogs/dialog_for_topic', :dialog => d, :encounter => d.encounter %>
+		<% end %>
+  <% end %>
+</div>

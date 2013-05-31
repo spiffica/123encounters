@@ -9,23 +9,29 @@ $ ->
         $('span.contact_list input[type=checkbox]').click ->
           check = $(this)
           id = check.attr('id')
+          container = $(this).closest('div.dialogs')
           if check.prop('checked')
-            $('div.' + id).show()
+            container.find('div.' + id).show()
           else
-            $('div.' + id).hide()
+            container.find('div.' + id).hide()
     else
       dialogs.hide 'slow', ->
         btn.text('Show Dialogs')
 
 
+  # needs serious work if need to use it
+  # can't isolate the one target that was clicked in the ajaxSuccess
+  # it isolates the proper $this in the click part, but not in the ajax
+  $('a.topic-dialogs-link').on
+    click: ->
+      target = $(this)
+      target.hide()
+      
+    ajaxSuccess:(e) ->
+      jTarget = $(e.target).prop("id")
+      console.log(jTarget)
+      newBtn = $('a#'+jTarget).closest('div')
+        .children('button.show_dialogs_btn')
+      newBtn.show()
+      newBtn.trigger('click')
 
-      #    btn.nextAll('div.dialogs').first().toggle 200, "linear"
-      #    tx = btn.text()
-      #    tx = if (tx == 'Show Dialogs') then 'Hide Dialogs' else 'Show Dialogs'
-      #    btn.text(tx)
-      #
-      #    #this is having conflicts with above. ???? works if placed first
-      #    # but then the above code doesn't work
-      #	$('span#contact_list input[type=checkbox]').click ->
-      #		id = $(this).attr('id')
-      #		$('div.' + id).toggle()

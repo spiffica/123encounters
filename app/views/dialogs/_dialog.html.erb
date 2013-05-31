@@ -1,10 +1,6 @@
-<% if dialog.topic %>
 	<div class="dialog" id="dialog-<%= dialog.id %>">
 		<h4><%= link_to dialog.title,topic_path(dialog.topic), class:"topic_link" %></h4>
 			<%= simple_format dialog.content %>
 		</p>
-		<%= link_to 'edit', edit_encounter_dialog_path(encounter,dialog) %>
-		<%= link_to 'delete', encounter_dialog_path(encounter,dialog), method: :delete %>
 		<hr/>
 	</div>
-<% end %>

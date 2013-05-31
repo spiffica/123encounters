@@ -5,12 +5,9 @@ class ContactsController < ApplicationController
 	end
 
 	def show
-		@contact = Contact.find(params[:id])
-    @encounters = Encounter.includes(:topics => :dialogs).where(contact_id: params[:id]) 
-    @topics = @contact.topics.joins(:encounters)
-      #Topic.includes(:contacts).joins(:encounters).where("encounters.contact_id = ?", params[:id])
-      #@contact.encounters.all
-#   @topics = @contact.topics.uniq
+		@contact = Contact.includes(:encounters,:dialogs => :topic).find(params[:id])
+    @encounters = @contact.encounters
+    @topics = @contact.topics.uniq
 	end
 
 	def new
