@@ -4,12 +4,4 @@
     <li class="btn" id="topics"><a href='#topics'>Topics</a></li>
   </ul>
 </nav>
-<div class="contacts-data">
-  <div class="row-fluid data-tab" id="encounters-tab">
-    <%= render @dashboard.encounters %>
-    
-  </div>
-  <div class="data-tab" id="topics-tab">
-    <%= render @dashboard.topics %>
-  </div>
-</div>
+<%= render @dashboard.timeline %>

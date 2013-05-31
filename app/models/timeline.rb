@@ -5,10 +5,10 @@ class Timeline
   end
 
   def encounters
-    Encounter.includes(:topics,:dialogs,:contact).where(user_id: @user.id)
+    Encounter.includes(:topics,:dialogs,:contact).where(user_id: @user)
   end
 
   def topics
-    Topic.where(user_id: @user.id)
+    Topic.where(user_id: @user)
   end
 end
