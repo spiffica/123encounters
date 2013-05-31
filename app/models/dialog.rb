@@ -27,15 +27,11 @@ class Dialog < ActiveRecord::Base
 
   scope :by_topic, ->(topic) { where(topic_id: topic) }
   scope :order_by_encounter, -> { joins(:encounter).order('encounters.time_of DESC') }
-  before_validation  :create_topic
+  #before_validation  :create_topic
   
 
 # move this to a service object related to caller
   def create_topic
-    if new_topic.present?
-      self.topic = Topic.create(title: new_topic)
-      self.topic.user_id = user_id
-      self.topic.save
-    end
+      self.topic = Topic.create(title: new_topic) if new_topic.present?
   end
 end

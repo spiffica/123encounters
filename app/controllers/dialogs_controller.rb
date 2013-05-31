@@ -15,7 +15,7 @@ class DialogsController < ApplicationController
         #session[:topic_key] = @dialog.topic_id
   			format.html do
   				flash[:success] = "New dialog created"
-  				redirect_to :back
+  				redirect_to @encounter
   			end
         format.js
   		else
