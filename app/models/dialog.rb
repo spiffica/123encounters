@@ -32,8 +32,10 @@ class Dialog < ActiveRecord::Base
 
 # move this to a service object related to caller
   def create_topic
-    self.topic = Topic.create(title: new_topic) if new_topic.present?
-    self.topic.user_id = user_id
-    self.topic.save
+    if new_topic.present?
+      self.topic = Topic.create(title: new_topic)
+      self.topic.user_id = user_id
+      self.topic.save
+    end
   end
 end
