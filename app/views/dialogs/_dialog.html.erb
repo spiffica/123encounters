@@ -1,6 +1,8 @@
+<% unless dialog.changed? %>
 	<div class="dialog" id="dialog-<%= dialog.id %>">
 		<h4><%= link_to dialog.title,topic_path(dialog.topic), class:"topic_link" %></h4>
 			<%= simple_format dialog.content %>
 		</p>
 		<hr/>
 	</div>
+<% end %>

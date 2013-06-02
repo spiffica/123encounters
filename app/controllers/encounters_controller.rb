@@ -14,6 +14,7 @@ class EncountersController < ApplicationController
   	@encounter = Encounter.find(params[:id])
   	@dialog = @encounter.dialogs.build
     @topics = current_user.topics.all
+    binding.pry
   end
 
   def edit

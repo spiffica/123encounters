@@ -3,7 +3,7 @@
       <%= f.association :topic, collection: current_user.topics, required: true, label_method: :title,
           prompt:"--Choose a topic--" %>
     or create one:
-    <%#= f.input :new_topic %>
+    <%= f.input :new_topic %>
 		<%= f.input :content, label: "What was said?",input_html: {rows:5} %>
 		<%= f.submit %>
 	<% end %>

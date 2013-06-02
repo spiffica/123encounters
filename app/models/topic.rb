@@ -19,7 +19,6 @@ class Topic < ActiveRecord::Base
 
   validates :title, presence: true
 
-  #default_scope includes(:contacts, :dialogs)
   default_scope order("updated_at DESC")
 
   def unique_contacts

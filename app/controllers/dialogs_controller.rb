@@ -12,10 +12,11 @@ class DialogsController < ApplicationController
   	@dialog = @encounter.dialogs.build(params[:dialog])
   	respond_to do |format|
   		if @dialog.save
+        binding.pry
         #session[:topic_key] = @dialog.topic_id
   			format.html do
   				flash[:success] = "New dialog created"
-  				redirect_to @encounter
+  				redirect_to encounter_path @encounter
   			end
         format.js
   		else
@@ -50,7 +51,7 @@ class DialogsController < ApplicationController
 
   private
 
-  	def set_encounter
-  		@encounter = Encounter.find(session[:encounter_key])
-  	end
+#  	def set_encounter
+#  		@encounter = Encounter.find(session[:encounter_key])
+#  	end
 end
