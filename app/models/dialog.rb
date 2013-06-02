@@ -35,6 +35,5 @@ class Dialog < ActiveRecord::Base
       t.update_column(:user_id, self.user_id)
       t.save
       self.topic = t
-    binding.pry
   end
 end
